@@ -2,7 +2,7 @@
 
 # 🚀 FinTrack - Controle Financeiro Pessoal
 
-**FinTrack** é um sistema completo de gestão financeira pessoal, desenvolvido como projeto de portfólio para demonstrar competências em backend (Java + Spring Boot), frontend (Angular), arquitetura limpa, testes automatizados, uso de Docker e organização profissional de tarefas. O foco é a experiência do usuário e a clareza na previsão e controle das finanças.
+**FinTrack** é um sistema completo de gestão financeira pessoal, desenvolvido como projeto de portfólio para demonstrar competências em backend (Java + Spring Boot), frontend (Next.JS), arquitetura limpa, testes automatizados, uso de Docker e organização profissional de tarefas. O foco é a experiência do usuário e a clareza na previsão e controle das finanças.
 
 [![LinkedIn](https://img.shields.io/badge/Autor-Isaac_Figueiredo-blue?logo=linkedin)](https://www.linkedin.com/in/figueiredoisaac/)
 
@@ -74,7 +74,7 @@ Todas as funcionalidades possuem testes unitários e/ou de integração em Java,
 | Camada         | Tecnologia                                               |
 | -------------- | -------------------------------------------------------- |
 | Backend        | Java 21, Spring Boot 3, Spring Security, JPA, PostgreSQL |
-| Frontend       | Angular 2+, TypeScript, HTML, SCSS                       |
+| Frontend       | Next.js, TypeScript, HTML, SCSS                          |
 | Banco de Dados | PostgreSQL                                               |
 | Testes         | JUnit, Mockito, Spring Boot Test                         |
 | DevOps         | Docker, Docker Compose                                   |
