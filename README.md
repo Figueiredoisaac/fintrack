@@ -29,13 +29,13 @@ Acompanhe o desenvolvimento em tempo real via quadro Kanban com todas as tarefas
 * ğŸ“Š **Dashboard Financeiro** &#x20;
   GrÃ¡ficos e resumos visuais para anÃ¡lise rÃ¡pida da situaÃ§Ã£o financeira.
 
-* ğŸ” **AutenticaÃ§Ã£o de UsuÃ¡rios** &#x20;
+* ğŸ” **AutenticaÃ§Ã£o de UsuÃ¡rios** &#x20;
   Cadastro e autenticaÃ§Ã£o de usuÃ¡rios garantindo privacidade e seguranÃ§a dos dados financeiros.
 
 * ğŸ“¦ **AplicaÃ§Ã£o Containerizada** &#x20;
   Ambiente Dockerizado para execuÃ§Ã£o simples e consistente da aplicaÃ§Ã£o.
 
-* ğŸ¦ **GestÃ£o de Contas BancÃ¡rias** &#x20;
+* ğŸ¦ **GestÃ£o de Contas BancÃ¡rias** &#x20;
   Cadastro e gerenciamento de contas bancÃ¡rias diversas com acompanhamento individual de saldo e movimentaÃ§Ãµes.
 
 ### ğŸ”¹ Complementares (planejadas)
@@ -43,7 +43,7 @@ Acompanhe o desenvolvimento em tempo real via quadro Kanban com todas as tarefas
 * ğŸ’³ **Cadastro de Compras no CartÃ£o** &#x20;
   Registro detalhado das compras feitas com cartÃ£o de crÃ©dito.
 
-* ğŸ” **Compras Recorrentes no CartÃ£o** &#x20;
+* ğŸ” **Compras Recorrentes no CartÃ£o** &#x20;
   Gerenciamento das despesas automÃ¡ticas recorrentes em cartÃ£o de crÃ©dito.
 
 * ğŸ“… **Custos Recorrentes** &#x20;
@@ -96,6 +96,104 @@ Caso deseje conversar sobre o projeto, oportunidades ou colaboraÃ§Ãµes:
 
 * [LinkedIn: Isaac Figueiredo](https://www.linkedin.com/in/figueiredoisaac/)
 * [GitHub: figueiredoisaac](https://github.com/figueiredoisaac)
+
+---
+
+## ?? Como Executar o Projeto
+
+### Pré-requisitos
+- Java 21 ou superior
+- Maven 3.6+
+- Docker e Docker Compose
+- PostgreSQL (opcional, se não usar Docker)
+
+### 1. Clone o Repositório
+```bash
+git clone https://github.com/figueiredoisaac/fintrack.git
+cd fintrack
+```
+
+### 2. Configure o Banco de Dados
+```bash
+# Inicie o PostgreSQL com Docker Compose
+docker-compose up -d
+
+# Acesse o PgAdmin em: http://localhost:5050
+# Email: admin@fintrack.com
+# Senha: admin
+```
+
+### 3. Execute a Aplicação
+```bash
+# Na pasta fintrack/
+mvn spring-boot:run
+
+# A aplicação estará disponível em: http://localhost:8080/api
+```
+
+### 4. Testar as APIs
+Execute o script de teste para verificar se tudo está funcionando:
+```bash
+# Windows (com JWT)
+test_apis_jwt.bat
+
+# Ou teste manualmente:
+curl -X GET http://localhost:8080/api/public/health
+curl -X POST http://localhost:8080/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"isaac@fintrack.com","password":"123456"}'
+```
+
+### 5. Acessar o Banco de Dados
+- **H2 Console**: http://localhost:8080/h2-console
+- **JDBC URL**: jdbc:h2:mem:testdb
+- **Username**: sa
+- **Password**: password
+
+### 6. Documentação das APIs
+Consulte o arquivo `API_DOCUMENTATION_JWT.md` para ver todos os endpoints disponíveis com autenticação JWT.
+
+### 7. Executar Testes
+Execute os testes automatizados para verificar a qualidade do código:
+```bash
+# Windows
+run_tests.bat
+
+# Ou manualmente:
+mvn test
+```
+
+**Cobertura de Testes:**
+- ? Testes unitários para serviços
+- ? Testes de integração para controllers
+- ? Testes de segurança JWT
+- ? Configuração de teste separada
+
+---
+
+## ?? Status do Desenvolvimento
+
+### ? Implementado
+- [x] Estrutura base Spring Boot
+- [x] Entidades: User, Category, BankAccount, Transaction
+- [x] Repositórios JPA
+- [x] Configuração do H2 (desenvolvimento)
+- [x] DTOs e Serviços
+- [x] APIs REST completas (Usuários, Categorias, Contas Bancárias, Transações)
+- [x] Autenticação JWT completa
+- [x] Dashboard e Relatórios
+- [x] Testes unitários e de integração
+- [x] Documentação das APIs
+- [x] Scripts de teste
+- [x] Atualização automática de saldos
+
+### ?? Em Desenvolvimento
+- [ ] Upload de arquivos
+- [ ] Frontend Angular
+
+### ?? Próximos Passos
+- [ ] Implementar upload de arquivos
+- [ ] Desenvolver frontend Angular
 
 ---
 

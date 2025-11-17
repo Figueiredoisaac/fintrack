@@ -1,0 +1,46 @@
+-- Dados de exemplo para o FinTrack
+-- Este script será executado automaticamente pelo Spring Boot
+
+-- Inserir usuário de exemplo (senha: 123456)
+INSERT INTO users (name, email, password, active, created_at, updated_at) 
+VALUES ('Isaac Figueiredo', 'isaac@fintrack.com', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVEFDa', true, NOW(), NOW())
+ON CONFLICT (email) DO NOTHING;
+
+-- Inserir categorias de exemplo
+INSERT INTO categories (name, description, color, icon, type, user_id, active, created_at, updated_at) VALUES
+-- Categorias de Receita
+('Salário', 'Salário mensal', '#28a745', '??', 'INCOME', 1, true, NOW(), NOW()),
+('Freelance', 'Trabalhos freelancer', '#17a2b8', '??', 'INCOME', 1, true, NOW(), NOW()),
+('Investimentos', 'Rendimentos de investimentos', '#ffc107', '??', 'INCOME', 1, true, NOW(), NOW()),
+('Outros', 'Outras receitas', '#6c757d', '??', 'INCOME', 1, true, NOW(), NOW()),
+
+-- Categorias de Despesa
+('Alimentação', 'Gastos com alimentação', '#dc3545', '???', 'EXPENSE', 1, true, NOW(), NOW()),
+('Transporte', 'Combustível, transporte público', '#fd7e14', '??', 'EXPENSE', 1, true, NOW(), NOW()),
+('Moradia', 'Aluguel, condomínio, contas', '#6f42c1', '??', 'EXPENSE', 1, true, NOW(), NOW()),
+('Saúde', 'Plano de saúde, medicamentos', '#e83e8c', '??', 'EXPENSE', 1, true, NOW(), NOW()),
+('Educação', 'Cursos, livros, material escolar', '#20c997', '??', 'EXPENSE', 1, true, NOW(), NOW()),
+('Lazer', 'Entretenimento, hobbies', '#fd7e14', '??', 'EXPENSE', 1, true, NOW(), NOW()),
+('Vestuário', 'Roupas, calçados, acessórios', '#6c757d', '??', 'EXPENSE', 1, true, NOW(), NOW()),
+('Outros', 'Outras despesas', '#6c757d', '??', 'EXPENSE', 1, true, NOW(), NOW());
+
+-- Inserir contas bancárias de exemplo
+INSERT INTO bank_accounts (name, description, institution, account_number, agency, account_type, initial_balance, current_balance, color, icon, user_id, active, created_at, updated_at) VALUES
+('Conta Principal', 'Conta corrente principal', 'Banco do Brasil', '12345-6', '0001', 'CHECKING', 5000.00, 5000.00, '#007bff', '??', 1, true, NOW(), NOW()),
+('Poupança', 'Conta poupança para emergências', 'Banco do Brasil', '98765-4', '0001', 'SAVINGS', 10000.00, 10000.00, '#28a745', '??', 1, true, NOW(), NOW()),
+('Cartão Nubank', 'Cartão de crédito Nubank', 'Nubank', NULL, NULL, 'CREDIT_CARD', 0.00, 0.00, '#8b5cf6', '??', 1, true, NOW(), NOW()),
+('Carteira', 'Dinheiro em espécie', 'Físico', NULL, NULL, 'WALLET', 500.00, 500.00, '#ffc107', '??', 1, true, NOW(), NOW());
+
+-- Inserir algumas transações de exemplo
+INSERT INTO transactions (description, notes, amount, transaction_date, type, status, category_id, bank_account_id, user_id, recurring, created_at, updated_at) VALUES
+-- Receitas
+('Salário Janeiro', 'Salário mensal', 5000.00, CURRENT_DATE - INTERVAL '15 days', 'INCOME', 'CONFIRMED', 1, 1, 1, false, NOW(), NOW()),
+('Freelance Site', 'Desenvolvimento de site', 1500.00, CURRENT_DATE - INTERVAL '10 days', 'INCOME', 'CONFIRMED', 2, 1, 1, false, NOW(), NOW()),
+('Dividendos', 'Rendimentos de ações', 300.00, CURRENT_DATE - INTERVAL '5 days', 'INCOME', 'CONFIRMED', 3, 2, 1, false, NOW(), NOW()),
+
+-- Despesas
+('Supermercado', 'Compras do mês', -800.00, CURRENT_DATE - INTERVAL '12 days', 'EXPENSE', 'CONFIRMED', 5, 1, 1, false, NOW(), NOW()),
+('Combustível', 'Abastecimento', -150.00, CURRENT_DATE - INTERVAL '8 days', 'EXPENSE', 'CONFIRMED', 6, 1, 1, false, NOW(), NOW()),
+('Aluguel', 'Aluguel do apartamento', -1200.00, CURRENT_DATE - INTERVAL '3 days', 'EXPENSE', 'CONFIRMED', 7, 1, 1, true, NOW(), NOW()),
+('Netflix', 'Assinatura mensal', -39.90, CURRENT_DATE - INTERVAL '1 day', 'EXPENSE', 'CONFIRMED', 10, 3, 1, true, NOW(), NOW()),
+('Farmácia', 'Medicamentos', -85.50, CURRENT_DATE, 'EXPENSE', 'CONFIRMED', 8, 1, 1, false, NOW(), NOW()); 
